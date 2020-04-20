@@ -1,10 +1,13 @@
 ---
-title: "Untitled"
-author: "Darren L Dahly"
-date: "6 July 2017"
-output:
-  word_document:  
-    reference_docx: "style.1.docx"
+title: ''
+author: ''
+date: ''
+output: 
+  html_document:
+    df_print: paged
+    keep_md: true
+  word_document:
+    reference_docx: style.1.docx
 ---
 
 ```{r setup, include = FALSE}
@@ -23,6 +26,33 @@ output:
   library(viridis)
 
 ```
+
+```{r publication_qualityplots}
+
+  ggsave("XXX", device = "pdf", dpi = 600)
+
+```
+
+```{r if_html, eval = knitr::opts_knit$get("rmarkdown.pandoc.to") == "html"}
+
+```
+
+```{r if_word, eval = !knitr::opts_knit$get("rmarkdown.pandoc.to") == "html"}
+
+```
+
+```{r code_book}
+
+  print(summarytools::dfSummary(data), method = "render")
+
+```
+
+```{r sysinfo}
+
+  DescTools::SysInfo()
+
+```
+
 
 
 This is a descent 2 by 2 table
